@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,16 +109,42 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        #menu-icon {
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        #menu-options {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        #menu-options a {
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>NEJ THE POET</h1>
-        <div id="settings-icon" onclick="toggleSettings()">⚙️</div>
-        <div id="settings-menu">
-            <a onclick="toggleTheme()">Toggle Theme</a>
+        <div id="menu-icon" onclick="toggleMenu()">☰</div>
+        <div id="menu-options">
+            <a onclick="toggleTheme('dark')">Dark Theme</a>
+            <a onclick="toggleTheme('white')">White Theme</a>
         </div>
+        <h1>HOME OF POEMS</h1>
     </header>
+
     <main>
         <div class="poem-container">
             <span class="pin-icon">📌</span>
@@ -129,68 +156,72 @@
             <span class="pin-icon">📌</span>
             <h2>I Am Not Your Bro</h2>
             <p>Friendzoned, the heartache silently weeps,
-            More than a friendship, a secret it keeps.
-            I am not your bro, the heart does say,
-            Love's intricate game, emotions at play..</p>
+                More than a friendship, a secret it keeps.
+                I am not your bro, the heart does say,
+                Love's intricate game, emotions at play..</p>
         </div>
 
         <!-- Add more poem containers as needed -->
 
         <div class="poem-container">
             <span class="pin-icon">📌</span>
-            <h2>Another Poem</h2>
-            <p>In the realm of verses, where words takes flight 
-            Nej the Poet, weaving tales of light.
-            A pen dipped in dreams, emotions cascade,
-            On the canvas of thoughts, a serenade.
-            
-            Lines crafted with care, each stanza refined,
-            In the poet's heart, a universe enshrined.
-            Echoes of wisdom, lyrical and sweet,
-            Nej, the poet, makes language a treat.
-            
-            With ink as a quill, and passion as ink,
-            Verses bloom, a poetic link.
-            Navigating realms, where emotions flow,
-            NEJ the Poet, let your verses glow.</p>
+            <h2>NEJ THE POET</h2>
+            <p>In the realm of verses, where words take flight 
+                Nej the Poet, weaving tales of light.
+                A pen dipped in dreams, emotions cascade,
+                On the canvas of thoughts, a serenade.
+
+                Lines crafted with care, each stanza refined,
+                In the poet's heart, a universe enshrined.
+                Echoes of wisdom, lyrical and sweet,
+                Nej, the poet, makes language a treat.
+
+                With ink as a quill, and passion as ink,
+                Verses bloom, a poetic link.
+                Navigating realms, where emotions flow,
+                NEJ the Poet, let your verses glow.</p>
         </div>
 
         <div class="watermark">Phil</div>
     </main>
 
-<!-- Modify this form HTML and place it wherever you want your form -->
-<form
-  id="poem-form"
-  action="https://formspree.io/f/mqkrpedw"
-  method="POST"
->
-  <label>
-    Your Name:
-    <input type="text" name="name">
-  </label>
-  <label>
-    Poem:
-    <textarea name="poem"></textarea>
-  </label>
-  <!-- Your other form fields go here -->
-  <button type="submit">Submit</button>
-</form>
+    <!-- Modify this form HTML and place it wherever you want your form -->
+    <form
+        id="poem-form"
+        action="https://formspree.io/f/mqkrpedw"
+        method="POST"
+    >
+        <label>
+            Your Name:
+            <input type="text" name="name">
+        </label>
+        <label>
+            Poem:
+            <textarea name="poem"></textarea>
+        </label>
+        <label>
+            Your Other Form Field:
+            <input type="text" name="otherField">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
 
     <button id="add-poem-button" onclick="togglePoemForm()">Add Poem</button>
+
     <div id="poem-form">
         <textarea id="poem-text" placeholder="Write your poem here..."></textarea>
         <button id="submit-poem-button" onclick="addPoem()">Submit</button>
     </div>
 
     <script>
-        function toggleSettings() {
-            const settingsMenu = document.getElementById('settings-menu');
-            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        function toggleMenu() {
+            const menuOptions = document.getElementById('menu-options');
+            menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
         }
 
-        function toggleTheme() {
+        function toggleTheme(theme) {
             const body = document.body;
-            body.classList.toggle('dark-theme');
+            body.classList.toggle('dark-theme', theme === 'dark');
             // Adjust background color here if needed
         }
 
@@ -230,4 +261,5 @@
         }
     </script>
 </body>
+
 </html>
