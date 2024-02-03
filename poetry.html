@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOURPOEMSPACE</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000 0%, #333 100%);
+            color: #fff;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background: linear-gradient(to right, #333, #555);
+            color: white;
+            text-align: center;
+            padding: 1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            color: #ffcc00;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 0.5em;
+            margin-bottom: 0.8em;
+        }
+
+        .poem-container {
+            border: 2px solid #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .pin-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #ffcc00;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #777;
+            opacity: 0.5;
+        }
+
+        #add-poem-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffcc00;
+            color: #333;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #poem-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        #poem-form textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        #submit-poem-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NEJ THE POET</h1>
+        <div id="settings-icon" onclick="toggleSettings()">⚙️</div>
+        <div id="settings-menu">
+            <a onclick="toggleTheme()">Toggle Theme</a>
+        </div>
+    </header>
+    <main>
+        <div class="poem-container">
+            <span class="pin-icon">📌</span>
+            <h2>STFU Poem</h2>
+            <p>I said what I said, just STFU</p>
+        </div>
+
+        <div class="poem-container">
+            <span class="pin-icon">📌</span>
+            <h2>I Am Not Your Bro</h2>
+            <p>Friendzoned, the heartache silently weeps,
+            More than a friendship, a secret it keeps.
+            I am not your bro, the heart does say,
+            Love's intricate game, emotions at play..</p>
+        </div>
+
+        <!-- Add more poem containers as needed -->
+
+        <div class="poem-container">
+            <span class="pin-icon">📌</span>
+            <h2>Another Poem</h2>
+            <p>In the realm of verses, where words takes flight 
+            Nej the Poet, weaving tales of light.
+            A pen dipped in dreams, emotions cascade,
+            On the canvas of thoughts, a serenade.
+            
+            Lines crafted with care, each stanza refined,
+            In the poet's heart, a universe enshrined.
+            Echoes of wisdom, lyrical and sweet,
+            Nej, the poet, makes language a treat.
+            
+            With ink as a quill, and passion as ink,
+            Verses bloom, a poetic link.
+            Navigating realms, where emotions flow,
+            NEJ the Poet, let your verses glow.</p>
+        </div>
+
+        <div class="watermark">Phil</div>
+    </main>
+
+<!-- Modify this form HTML and place it wherever you want your form -->
+<form
+  id="poem-form"
+  action="https://formspree.io/f/mqkrpedw"
+  method="POST"
+>
+  <label>
+    Your Name:
+    <input type="text" name="name">
+  </label>
+  <label>
+    Poem:
+    <textarea name="poem"></textarea>
+  </label>
+  <!-- Your other form fields go here -->
+  <button type="submit">Submit</button>
+</form>
+
+    <button id="add-poem-button" onclick="togglePoemForm()">Add Poem</button>
+    <div id="poem-form">
+        <textarea id="poem-text" placeholder="Write your poem here..."></textarea>
+        <button id="submit-poem-button" onclick="addPoem()">Submit</button>
+    </div>
+
+    <script>
+        function toggleSettings() {
+            const settingsMenu = document.getElementById('settings-menu');
+            settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-theme');
+            // Adjust background color here if needed
+        }
+
+        function togglePoemForm() {
+            const poemForm = document.getElementById('poem-form');
+            poemForm.style.display = poemForm.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function addPoem() {
+            const poemText = document.getElementById('poem-text').value;
+            if (poemText.trim() !== '') {
+                const main = document.querySelector('main');
+
+                const poemContainer = document.createElement('div');
+                poemContainer.className = 'poem-container';
+
+                const pinIcon = document.createElement('span');
+                pinIcon.className = 'pin-icon';
+                pinIcon.textContent = '📌';
+
+                const h2 = document.createElement('h2');
+                h2.textContent = 'New Poem';
+
+                const p = document.createElement('p');
+                p.textContent = poemText;
+
+                poemContainer.appendChild(pinIcon);
+                poemContainer.appendChild(h2);
+                poemContainer.appendChild(p);
+
+                main.appendChild(poemContainer);
+
+                // Clear the form and hide it
+                document.getElementById('poem-text').value = '';
+                togglePoemForm();
+            }
+        }
+    </script>
+</body>
+</html>
