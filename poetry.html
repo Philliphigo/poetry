@@ -2,360 +2,396 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YOURPOEMSPACE</title>
-<style>
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-margin: 0;
-padding: 0;
-background: linear-gradient(to bottom, #000 0%, #333 100%);
-color: #fff;
-transition: background 0.3s, color 0.3s;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOURPOEMSPACE</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #000 0%, #333 100%);
+            color: #fff;
+            transition: background 0.3s, color 0.3s;
+        }
 
-header {
-background: linear-gradient(to right, #333, #555);
-color: white;
-text-align: center;
-padding: 1em;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
+        header {
+            background: linear-gradient(to right, #333, #555);
+            color: white;
+            text-align: center;
+            padding: 1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
 
-main {
-max-width: 800px;
-margin: 20px auto;
-padding: 20px;
-background-color: rgba(0, 0, 0, 0.8);
-box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-border-radius: 10px;
-}
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
 
-h1 {
-font-size: 2em;
-margin-bottom: 0.5em;
-}
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
 
-h2 {
-color: #ffcc00;
-border-bottom: 2px solid #ffcc00;
-padding-bottom: 0.5em;
-margin-bottom: 0.8em;
-}
+        h2 {
+            color: #ffcc00;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 0.5em;
+            margin-bottom: 0.8em;
+        }
 
-.poem-container {
-border: 2px solid #fff;
-border-radius: 10px;
-margin-bottom: 20px;
-padding: 20px;
-position: relative;
-background-color: rgba(0, 0, 0, 0.5);
-}
+        .poem-container {
+            border: 2px solid #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
 
-.pin-icon {
-position: absolute;
-top: 10px;
-right: 10px;
-font-size: 20px;
-color: #ffcc00;
-}
+        .pin-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #ffcc00;
+        }
 
-.watermark {
-position: fixed;
-bottom: 10px;
-right: 10px;
-font-size: 16px;
-color: #777;
-opacity: 0.5;
-}
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 16px;
+            color: #777;
+            opacity: 0.5;
+        }
 
-.interaction-section {
-display: flex;
-align-items: center;
-margin-top: 10px;
-}
+        .interaction-section {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
 
-.like-btn,
-.comment-btn {
-background-color: transparent;
-border: none;
-font-size: 20px;
-margin-right: 10px;
-cursor: pointer;
-color: #fff;
-}
+        .like-btn,
+        .comment-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            color: #fff;
+        }
 
-.like-count {
-color: #fff;
-}
+        .like-count {
+            color: #fff;
+        }
 
-.comments-section {
-background-color: rgba(0, 0, 0, 0.8);
-padding: 10px;
-margin-top: 10px;
-border-radius: 5px;
-}
+        .comments-section {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
 
-#add-poem-button {
-position: fixed;
-bottom: 20px;
-left: 20px;
-background-color: #ffcc00;
-color: #333;
-padding: 10px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-}
+        #add-poem-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffcc00;
+            color: #333;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-#poem-form {
-display: none;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color: rgba(0, 0, 0, 0.8);
-padding: 20px;
-border: 2px solid #fff;
-border-radius: 5px;
-z-index: 2;
-}
+        #poem-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            z-index: 2;
+        }
 
-#poem-form textarea {
-width: 100%;
-height: 100px;
-margin-bottom: 10px;
-}
+        #poem-form textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
 
-#submit-poem-button {
-background-color: #333;
-color: #fff;
-padding: 10px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-}
+        #submit-poem-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-#menu-icon {
-cursor: pointer;
-padding: 10px;
-}
+        #menu-icon {
+            cursor: pointer;
+            padding: 10px;
+        }
 
-#menu-options {
-display: none;
-position: absolute;
-top: 50px;
-right: 0;
-background-color: rgba(0, 0, 0, 0.8);
-padding: 10px;
-border: 2px solid #fff;
-border-radius: 5px;
-z-index: 2;
-}
+        #menu-options {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            z-index: 2;
+        }
 
-#menu-options a {
-display: block;
-padding: 5px;
-cursor: pointer;
-}
-</style>
+        #menu-options a {
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-<header>
-<div id="menu-icon" onclick="toggleMenu()">☰</div>
-<div id="menu-options">
-<a onclick="toggleTheme('dark')">Dark Theme</a>
-<a onclick="toggleTheme('white')">White Theme</a>
-</div>
-<h1>HOME OF POEMS</h1>
-</header>
+    <header>
+        <div id="menu-icon" onclick="toggleMenu()">☰</div>
+        <div id="menu-options">
+            <a onclick="toggleTheme('dark')">Dark Theme</a>
+            <a onclick="toggleTheme('white')">White Theme</a>
+        </div>
+        <h1>HOME OF POEMS</h1>
+    </header>
 
-<main>
-<div class="poem-container" id="poem1">
-<span class="pin-icon">📌</span>
-<h2>STFU Poem</h2>
-<p>I said what I said, just STFU</p>
-<div class="interaction-section">
-<button class="like-btn" onclick="like('poem1')">❤️</button>
-<span class="like-count">0 likes</span>
-<button class="comment-btn" onclick="toggleComments('poem1')">💬</button>
-<div class="comments-section" style="display: none;">
-<!-- Comments will be displayed here -->
-</div>
-</div>
-</div>
+    <main>
+        <div class="poem-container" id="poem1">
+            <span class="pin-icon">📌</span>
+            <h2>STFU Poem</h2>
+            <p>I said what I said, just STFU</p>
+            <div class="interaction-section">
+                <button class="like-btn" onclick="like('poem1')">👍</button>
+                <span class="like-count" id="like-count-poem1">105.1K likes</span>
+                <button class="comment-btn" onclick="toggleComments('poem1')">💬</button>
+                <div class="comments-section" id="comments-section-poem1" style="display: none;">
+                    <textarea id="comment-text-poem1" placeholder="Write your comment here..."></textarea>
+                    <button onclick="submitComment('poem1')">Post Comment</button>
+                    <div id="comments-list-poem1"></div>
+                </div>
+            </div>
+        </div>
 
-<div class="poem-container" id="poem2">
-<span class="pin-icon">📌</span>
-<h2>I Am Not Your Bro</h2>
-<p>Friendzoned, the heartache silently weeps,</p>
-<p>More than a friendship, a secret it keeps.</p>
-<p>I am not your bro, the heart does say,</p>
-<p>Love's intricate game, emotions at play..</p>
-<div class="interaction-section">
-<button class="like-btn" onclick="like('poem2')">❤️</button>
-<span class="like-count">0 likes</span>
-<button class="comment-btn" onclick="toggleComments('poem2')">💬</button>
-<div class="comments-section" style="display: none;">
-<!-- Comments will be displayed here -->
-</div>
-</div>
-</div>
+        <div class="poem-container" id="poem2">
+            <span class="pin-icon">📌</span>
+            <h2>I Am Not Your Bro</h2>
+            <p><p>Friendzoned, the heartache silently weeps,</p>
+            <p>More than a friendship, a secret it keeps.</p>
+            <p>I am not your bro, the heart does say,</p>
+            <p>Love's intricate game, emotions at play..</p></p>
+            <div class="interaction-section">
+                <button class="like-btn" onclick="like('poem2')">👍</button>
+                <span class="like-count" id="like-count-poem2">50.3K likes</span>
+                <button class="comment-btn" onclick="toggleComments('poem2')">💬</button>
+                <div class="comments-section" id="comments-section-poem2" style="display: none;">
+                    <textarea id="comment-text-poem2" placeholder="Write your comment here..."></textarea>
+                    <button onclick="submitComment('poem2')">Post Comment</button>
+                    <div id="comments-list-poem2"></div>
+                </div>
+            </div>
+        </div>
 
-<div class="poem-container" id="poem3">
-<span class="pin-icon">📌</span>
-<h2>NEJ THE POET</h2>
-<p>In the realm of verses,</p>
-<p>where words take flight</p>
-<p>Nej the Poet, weaving tales of light.</p>
-<p>A pen dipped in dreams, emotions cascade,</p>
-<p>On the canvas of thoughts, a serenade.</p>
-<p>Lines crafted with care, each stanza refined,</p>
-<p>In the poet's heart, a universe enshrined.</p>
-<p>Echoes of wisdom, lyrical and sweet,</p>
-<p>Nej, the poet, makes language a treat.</p>
-<p>With ink as a quill, and passion as ink,</p>
-<p>Verses bloom, a poetic link.</p>
-<p>Navigating realms, where emotions flow,</p>
-<p>NEJ the Poet, let your verses glow.</p>
-<div class="interaction-section">
-<button class="like-btn" onclick="like('poem3')">❤️</button>
-<span class="like-count">0 likes</span>
-<button class="comment-btn" onclick="toggleComments('poem3')">💬</button>
-<div class="comments-section" style="display: none;">
-<!-- Comments will be displayed here -->
-</div>
-</div>
-</div>
+        <div class="poem-container" id="poem3">
+            <span class="pin-icon">📌</span>
+            <h2>Nej The Poet</h2>
+            <p>In the realm of verses,</p>
+            <p>where words take flight</p>
+            <p>Nej the Poet, weaving tales of light.</p>
+            <p>A pen dipped in dreams, emotions cascade,</p>
+            <p>On the canvas of thoughts, a serenade.</p>
+            <p>Lines crafted with care, each stanza refined,</p>
+            <p>In the poet's heart, a universe enshrined.</p>
+            <p>Echoes of wisdom, lyrical and sweet,</p>
+            <p>Nej, the poet, makes language a treat.</p>
+            <p>With ink as a quill, and passion as ink,</p>
+            <p>Verses bloom, a poetic link.</p>
+            <p>Navigating realms, where emotions flow,</p>
+            <p>NEJ the Poet, let your verses glow.</p>
+            <div class="interaction-section">
+                <button class="like-btn" onclick="like('poem3')">👍</button>
+                <span class="like-count" id="like-count-poem3">1.2M likes</span>
+                <button class="comment-btn" onclick="toggleComments('poem3')">💬</button>
+                <div class="comments-section" id="comments-section-poem3" style="display: none;">
+                    <textarea id="comment-text-poem3" placeholder="Write your comment here..."></textarea>
+                    <button onclick="submitComment('poem3')">Post Comment</button>
+                    <div id="comments-list-poem3"></div>
+                </div>
+            </div>
+        </div>
 
-<!-- Add more poem containers as needed -->
+        <!-- Add more poem containers as needed -->
 
-<div class="watermark">Phil</div>
-</main>
+        <div class="watermark">Phil</div>
+    </main>
 
-<form
-id="poem-form"
-action="https://formspree.io/f/mqkrpedw"
-method="POST"
->
-<label>
-Your Name:
-<input type="text" name="name">
-</label>
-<label>
-Poem:
-<textarea name="poem"></textarea>
-</label>
-<label>
-Your Other Form Field:
-<input type="text" name="otherField">
-</label>
-<button type="submit">Submit</button>
-</form>
-<!-- Existing form... -->
-</form>
+    <form id="poem-form" action="https://formspree.io/f/mqkrpedw" method="POST">
+        <label>
+            Your Name:
+            <input type="text" name="name">
+        </label>
+        <label>
+            Poem:
+            <textarea name="poem"></textarea>
+        </label>
+        <label>
+            Your Other Form Field:
+            <input type="text" name="otherField">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
 
-<button id="add-poem-button" onclick="togglePoemForm()">Add Poem</button>
+    <button id="add-poem-button" onclick="togglePoemForm()">Add Poem</button>
 
-<div id="poem-form">
-<textarea id="poem-text" placeholder="Write your poem here..."></textarea>
-<button id="submit-poem-button" onclick="addPoem()">Submit</button>
-</div>
+    <div id="poem-form">
+        <textarea id="poem-text" placeholder="Write your poem here..."></textarea>
+        <button id="submit-poem-button" onclick="addPoem()">Submit</button>
+    </div>
 
-<script>
-function toggleMenu() {
-const menuOptions = document.getElementById('menu-options');
-menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
-}
+    <script>
+        function toggleMenu() {
+            const menuOptions = document.getElementById('menu-options');
+            menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
+        }
 
-function toggleTheme(theme) {
-const body = document.body;
-body.classList.toggle('dark-theme', theme === 'dark');
-body.classList.toggle('white-theme', theme === 'white');
-// Adjust background color here if needed
-}
+        function toggleTheme(theme) {
+            const body = document.body;
+            body.classList.toggle('dark-theme', theme === 'dark');
+            body.classList.toggle('white-theme', theme === 'white');
+            // Adjust background color here if needed
+        }
 
-function togglePoemForm() {
-const poemForm = document.getElementById('poem-form');
-poemForm.style.display = poemForm.style.display === 'block' ? 'none' : 'block';
-}
+        function togglePoemForm() {
+            const poemForm = document.getElementById('poem-form');
+            poemForm.style.display = poemForm.style.display === 'block' ? 'none' : 'block';
+        }
 
-function addPoem() {
-const poemText = document.getElementById('poem-text').value;
-if (poemText.trim() !== '') {
-const main = document.querySelector('main');
+        function addPoem() {
+            const poemText = document.getElementById('poem-text').value;
+            if (poemText.trim() !== '') {
+                const main = document.querySelector('main');
 
-const poemContainer = document.createElement('div');
-poemContainer.className = 'poem-container';
+                const poemContainer = document.createElement('div');
+                const poemId = 'poem' + (main.childElementCount + 1);
+                poemContainer.id = poemId;
+                poemContainer.className = 'poem-container';
 
-const pinIcon = document.createElement('span');
-pinIcon.className = 'pin-icon';
-pinIcon.textContent = '📌';
+                const pinIcon = document.createElement('span');
+                pinIcon.className = 'pin-icon';
+                pinIcon.textContent = '📌';
 
-const h2 = document.createElement('h2');
-h2.textContent = 'New Poem';
+                const h2 = document.createElement('h2');
+                h2.textContent = 'New Poem';
 
-const p = document.createElement('p');
-p.textContent = poemText;
+                const p = document.createElement('p');
+                p.textContent = poemText;
 
-const interactionSection = document.createElement('div');
-interactionSection.className = 'interaction-section';
+                const interactionSection = document.createElement('div');
+                interactionSection.className = 'interaction-section';
 
-const likeBtn = document.createElement('button');
-likeBtn.className = 'like-btn';
-likeBtn.textContent = '❤️';
-likeBtn.onclick = function () {
-like(poemContainer.id);
-};
+                const likeBtn = document.createElement('button');
+                likeBtn.className = 'like-btn';
+                likeBtn.textContent = '👍';
+                likeBtn.onclick = function ()
+                {
+                    like(poemId);
+                };
 
-const likeCount = document.createElement('span');
-likeCount.className = 'like-count';
-likeCount.textContent = '0 likes';
+                const likeCount = document.createElement('span');
+                likeCount.className = 'like-count';
+                likeCount.id = 'like-count-' + poemId;
+                likeCount.textContent = '0 likes';
 
-const commentBtn = document.createElement('button');
-commentBtn.className = 'comment-btn';
-commentBtn.textContent = '💬';
-commentBtn.onclick = function () {
-toggleComments(poemContainer.id);
-};
+                const commentBtn = document.createElement('button');
+                commentBtn.className = 'comment-btn';
+                commentBtn.textContent = '💬';
+                commentBtn.onclick = function () {
+                    toggleComments(poemId);
+                };
 
-const commentsSection = document.createElement('div');
-commentsSection.className = 'comments-section';
-commentsSection.style.display = 'none';
+                const commentsSection = document.createElement('div');
+                commentsSection.className = 'comments-section';
+                commentsSection.id = 'comments-section-' + poemId;
+                commentsSection.style.display = 'none';
 
-interactionSection.appendChild(likeBtn);
-interactionSection.appendChild(likeCount);
-interactionSection.appendChild(commentBtn);
+                const commentTextarea = document.createElement('textarea');
+                commentTextarea.id = 'comment-text-' + poemId;
+                commentTextarea.placeholder = 'Write your comment here...';
 
-poemContainer.appendChild(pinIcon);
-poemContainer.appendChild(h2);
-poemContainer.appendChild(p);
-poemContainer.appendChild(interactionSection);
-poemContainer.appendChild(commentsSection);
+                const postCommentBtn = document.createElement('button');
+                postCommentBtn.textContent = 'Post Comment';
+                postCommentBtn.onclick = function () {
+                    submitComment(poemId);
+                };
 
-main.appendChild(poemContainer);
+                const commentsList = document.createElement('div');
+                commentsList.id = 'comments-list-' + poemId;
 
-// Clear the form and hide it
-document.getElementById('poem-text').value = '';
-togglePoemForm();
-}
-}
+                interactionSection.appendChild(likeBtn);
+                interactionSection.appendChild(likeCount);
+                interactionSection.appendChild(commentBtn);
 
-function like(poemId) {
-const likeCount = document.getElementById(poemId).querySelector('.like-count');
-let currentLikes = parseInt(likeCount.textContent);
-currentLikes++;
-likeCount.textContent = currentLikes + (currentLikes === 1 ? ' like' : ' likes');
-}
+                commentsSection.appendChild(commentTextarea);
+                commentsSection.appendChild(postCommentBtn);
+                commentsSection.appendChild(commentsList);
 
-function toggleComments(poemId) {
-const commentsSection = document.getElementById(poemId).querySelector('.comments-section');
-commentsSection.style.display = commentsSection.style.display === 'block' ? 'none' : 'block';
-}
-</script>
+                poemContainer.appendChild(pinIcon);
+                poemContainer.appendChild(h2);
+                poemContainer.appendChild(p);
+                poemContainer.appendChild(interactionSection);
+                poemContainer.appendChild(commentsSection);
+
+                main.appendChild(poemContainer);
+
+                // Clear the form and hide it
+                document.getElementById('poem-text').value = '';
+                togglePoemForm();
+            }
+        }
+
+        function like(poemId) {
+            const likeCount = document.getElementById('like-count-' + poemId);
+            const likedBefore = localStorage.getItem(poemId + '-liked');
+            let currentLikes = parseInt(likeCount.textContent);
+            if (!likedBefore) {
+                currentLikes++;
+                localStorage.setItem(poemId + '-liked', 'true');
+            }
+            likeCount.textContent = currentLikes + (currentLikes === 1 ? ' like' : ' likes');
+        }
+
+        function toggleComments(poemId) {
+            const commentsSection = document.getElementById('comments-section-' + poemId);
+            commentsSection.style.display = commentsSection.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function submitComment(poemId) {
+            const commentText = document.getElementById('comment-text-' + poemId).value;
+            if (commentText.trim() !== '') {
+                const commentsList = document.getElementById('comments-list-' + poemId);
+                const comment = document.createElement('p');
+                comment.textContent = commentText;
+                commentsList.appendChild(comment);
+                document.getElementById('comment-text-' + poemId).value = '';
+            }
+        }
+    </script>
 </body>
 
 </html>
-
