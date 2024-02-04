@@ -155,10 +155,11 @@
         <div class="poem-container">
             <span class="pin-icon">📌</span>
             <h2>I Am Not Your Bro</h2>
-            <p>Friendzoned, the heartache silently weeps,
-                More than a friendship, a secret it keeps.
-                I am not your bro, the heart does say,
-                Love's intricate game, emotions at play..</p>
+            <p>Friendzoned, the heartache silently weeps,<p>
+            <p>
+                More than a friendship, a secret it keeps.<p>
+                <p>I am not your bro, the heart does say,<p>
+                <p>Love's intricate game, emotions at play..</p>
         </div>
 
         <!-- Add more poem containers as needed -->
@@ -166,19 +167,25 @@
         <div class="poem-container">
             <span class="pin-icon">📌</span>
             <h2>NEJ THE POET</h2>
-            <p>In the realm of verses, where words take flight 
-                Nej the Poet, weaving tales of light.
-                A pen dipped in dreams, emotions cascade,
-                On the canvas of thoughts, a serenade.
+            <p>In the realm of verses,<p>
+             
+            </p> where words take flight<p>
+             
+            </p>
+                Nej the Poet, weaving tales of light.<p>
+                  
+                </p>
+                A pen dipped in dreams, emotions cascade,<p></p>
+                On the canvas of thoughts, a serenade.<p></p>
 
-                Lines crafted with care, each stanza refined,
-                In the poet's heart, a universe enshrined.
-                Echoes of wisdom, lyrical and sweet,
-                Nej, the poet, makes language a treat.
+                Lines crafted with care, each stanza refined,<p></p>
+                In the poet's heart, a universe enshrined.<p></p>
+                Echoes of wisdom, lyrical and sweet,<p></p>
+                Nej, the poet, makes language a treat.<p></p>
 
-                With ink as a quill, and passion as ink,
-                Verses bloom, a poetic link.
-                Navigating realms, where emotions flow,
+                With ink as a quill, and passion as ink,<p></p>
+                Verses bloom, a poetic link.<p></p>
+                Navigating realms, where emotions flow,<p></p>
                 NEJ the Poet, let your verses glow.</p>
         </div>
 
@@ -213,53 +220,55 @@
         <button id="submit-poem-button" onclick="addPoem()">Submit</button>
     </div>
 
-    <script>
-        function toggleMenu() {
-            const menuOptions = document.getElementById('menu-options');
-            menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
+  <script>
+    function toggleMenu() {
+        const menuOptions = document.getElementById('menu-options');
+        menuOptions.style.display = menuOptions.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleTheme(theme) {
+        const body = document.body;
+        body.classList.toggle('dark-theme', theme === 'dark');
+        body.classList.toggle('white-theme', theme === 'white');
+        // Adjust background color here if needed
+    }
+
+    function togglePoemForm() {
+        const poemForm = document.getElementById('poem-form');
+        poemForm.style.display = poemForm.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function addPoem() {
+        const poemText = document.getElementById('poem-text').value;
+        if (poemText.trim() !== '') {
+            const main = document.querySelector('main');
+
+            const poemContainer = document.createElement('div');
+            poemContainer.className = 'poem-container';
+
+            const pinIcon = document.createElement('span');
+            pinIcon.className = 'pin-icon';
+            pinIcon.textContent = '📌';
+
+            const h2 = document.createElement('h2');
+            h2.textContent = 'New Poem';
+
+            const p = document.createElement('p');
+            p.textContent = poemText;
+
+            poemContainer.appendChild(pinIcon);
+            poemContainer.appendChild(h2);
+            poemContainer.appendChild(p);
+
+            main.appendChild(poemContainer);
+
+            // Clear the form and hide it
+            document.getElementById('poem-text').value = '';
+            togglePoemForm();
         }
+    }
+</script>
 
-        function toggleTheme(theme) {
-            const body = document.body;
-            body.classList.toggle('dark-theme', theme === 'dark');
-            // Adjust background color here if needed
-        }
-
-        function togglePoemForm() {
-            const poemForm = document.getElementById('poem-form');
-            poemForm.style.display = poemForm.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function addPoem() {
-            const poemText = document.getElementById('poem-text').value;
-            if (poemText.trim() !== '') {
-                const main = document.querySelector('main');
-
-                const poemContainer = document.createElement('div');
-                poemContainer.className = 'poem-container';
-
-                const pinIcon = document.createElement('span');
-                pinIcon.className = 'pin-icon';
-                pinIcon.textContent = '📌';
-
-                const h2 = document.createElement('h2');
-                h2.textContent = 'New Poem';
-
-                const p = document.createElement('p');
-                p.textContent = poemText;
-
-                poemContainer.appendChild(pinIcon);
-                poemContainer.appendChild(h2);
-                poemContainer.appendChild(p);
-
-                main.appendChild(poemContainer);
-
-                // Clear the form and hide it
-                document.getElementById('poem-text').value = '';
-                togglePoemForm();
-            }
-        }
-    </script>
 </body>
 
 </html>
